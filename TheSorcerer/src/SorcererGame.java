@@ -7,7 +7,10 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 
+
 public class SorcererGame extends BasicGame{
+	
+	
 
 	private LinkedList<Entity> entities ;
 	public SorcererGame(String SorcererGame){
@@ -16,17 +19,16 @@ public class SorcererGame extends BasicGame{
 	}
 	
 
-	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		for (Entity entity : entities) {
-		      entity.render(g);
+		      entity.draw();
 		    }
 		
 	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		// TODO Auto-generated method stub
+		entities.add(new Map(0,0));
 		
 	}
 
@@ -42,12 +44,11 @@ public class SorcererGame extends BasicGame{
 			  SorcererGame game = new SorcererGame("SorcererGame");
 		      AppGameContainer appgc = new AppGameContainer(game);
 		      appgc.setDisplayMode(640, 480, false);
+		      
 		      appgc.setMinimumLogicUpdateInterval(1000 / 60);
 		      appgc.start();
 		    } catch (SlickException e) {
 		      e.printStackTrace();
 		    }
 	}
-
-
 }
