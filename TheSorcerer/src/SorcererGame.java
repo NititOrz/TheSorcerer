@@ -10,7 +10,11 @@ import org.newdawn.slick.SlickException;
 
 public class SorcererGame extends BasicGame{
 	
-	
+	public static final int GAME_WIDTH = 640;
+	public static final int GAME_HEIGHT = 480;
+	private boolean isStarted;
+	private boolean isGameOver;
+	private boolean isRestart;
 
 	private LinkedList<Entity> entities ;
 	public SorcererGame(String SorcererGame){
@@ -29,6 +33,8 @@ public class SorcererGame extends BasicGame{
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		entities.add(new Map(0,0));
+		entities.add(new WhiteSorcerer(GAME_WIDTH/6-45,GAME_HEIGHT/2-32));
+		entities.add(new BlackSorcerer(GAME_WIDTH/6*5,GAME_HEIGHT/2-32));
 		
 	}
 
