@@ -20,6 +20,7 @@ public class BlackSorcerer extends Sorcerer {
 			image.draw(x,y);
 		}
 	 
+	 
 	 public void turnLeft() {
 	      x -= 2;
 	      image = left;
@@ -39,6 +40,7 @@ public class BlackSorcerer extends Sorcerer {
 		 y += 2;
 		 image = front;
 	 }
+	 
 	 
 }
 

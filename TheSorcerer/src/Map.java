@@ -4,6 +4,7 @@ import org.newdawn.slick.SlickException;
 
 public class Map implements Entity{
 	
+	public static final int WALL_WIDTH = 20;
 	private float x;
 	private float y;
 	private Image background;
@@ -35,9 +36,9 @@ public class Map implements Entity{
 	 public void draw(){
 		background.draw(x,y);
 		topbottomwall.draw(x,y);
-		topbottomwall.draw(x,y+460);
+		topbottomwall.draw(x,y+SorcererGame.GAME_HEIGHT-WALL_WIDTH);
 		leftrightwall.draw(x,y);
-		leftrightwall.draw(x+620,y);
+		leftrightwall.draw(x+SorcererGame.GAME_WIDTH-WALL_WIDTH,y);
 	}
 
 	@Override

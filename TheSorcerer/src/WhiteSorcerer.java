@@ -16,11 +16,10 @@ public class WhiteSorcerer extends Sorcerer {
 		image = right;
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	 public void draw(){
 			image.draw(x,y);
 		}
-	 
 	 
 	 public void turnLeft() {
 	      x -= 2;
@@ -42,4 +41,13 @@ public class WhiteSorcerer extends Sorcerer {
 		 image = front;
 	 }
 	 
+	 /*public void SorcererCheck(){
+			if(this.x <= getX()+SORCERER_WIDTH && this.x >= getX()+1){
+				System.out.println("Colision");
+			}
+		}
+	 
+	 public void update(int delta) {
+		 SorcererCheck();
+		}*/
 }

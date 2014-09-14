@@ -55,34 +55,44 @@ public class SorcererGame extends BasicGame{
 	
 		void updateSorcererMovement(Input input, int delta) {
 		
-	    if (input.isKeyDown(Input.KEY_A)) { 
-	      white.turnLeft();
-	    }
-	    if (input.isKeyDown(Input.KEY_D)) {
-	      white.turnRight();
-	    }
-	    if (input.isKeyDown(Input.KEY_W)) { 
-		  white.turnUp();
-		}
-		if (input.isKeyDown(Input.KEY_S)) {
-		  white.turnDown();
-		}
-		
-		if (input.isKeyDown(Input.KEY_J)) { 
-	      black.turnLeft();
-		}
-		if (input.isKeyDown(Input.KEY_L)) {
-	      black.turnRight();
-		}
-	    if (input.isKeyDown(Input.KEY_I)) { 
-		  black.turnUp();
-		}
-		if (input.isKeyDown(Input.KEY_K)) {
-		  black.turnDown();
-		}
+	    whiteSorercerController(input);
+		blackSorcererController(input);
 		
 	}
+
+
+		public void blackSorcererController(Input input) {
+			if (input.isKeyDown(Input.KEY_J)) { 
+			  black.turnLeft();
+			}
+			if (input.isKeyDown(Input.KEY_L)) {
+			  black.turnRight();
+			}
+			if (input.isKeyDown(Input.KEY_I)) { 
+			  black.turnUp();
+			}
+			if (input.isKeyDown(Input.KEY_K)) {
+			  black.turnDown();
+			}
+		}
+
+
+		public void whiteSorercerController(Input input) {
+			if (input.isKeyDown(Input.KEY_A)) { 
+			  white.turnLeft();
+			}
+			if (input.isKeyDown(Input.KEY_D)) {
+			  white.turnRight();
+			}
+			if (input.isKeyDown(Input.KEY_W)) { 
+			  white.turnUp();
+			}
+			if (input.isKeyDown(Input.KEY_S)) {
+			  white.turnDown();
+			}
+		}
 	
+		
 	public static void main(String[] args) {
 		try {
 			  SorcererGame game = new SorcererGame("SorcererGame");
