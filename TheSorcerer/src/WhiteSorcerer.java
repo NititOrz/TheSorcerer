@@ -4,7 +4,7 @@ import org.newdawn.slick.SlickException;
 
 public class WhiteSorcerer extends Sorcerer {
 
-	Image right,left,front,back,image;
+	public static float wx , wy;
 	
 	
 	public WhiteSorcerer(float x, float y) throws SlickException {
@@ -21,33 +21,4 @@ public class WhiteSorcerer extends Sorcerer {
 			image.draw(x,y);
 		}
 	 
-	 public void turnLeft() {
-	      x -= 2;
-	      image = left;
-	 }
- 
-	 public void turnRight(){
-		 x += 2;
-		 image = right;
-	 }
-
-	 public void turnUp(){
-		 y -= 2;
-		 image = back;
-	 }
-
-	 public void turnDown(){
-		 y += 2;
-		 image = front;
-	 }
-	 
-	 /*public void SorcererCheck(){
-			if(this.x <= getX()+SORCERER_WIDTH && this.x >= getX()+1){
-				System.out.println("Colision");
-			}
-		}
-	 
-	 public void update(int delta) {
-		 SorcererCheck();
-		}*/
 }

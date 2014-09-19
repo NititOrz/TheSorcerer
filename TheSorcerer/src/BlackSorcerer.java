@@ -4,8 +4,6 @@ import org.newdawn.slick.SlickException;
 
 public class BlackSorcerer extends Sorcerer {
 
-	Image right,left,front,back,image;
-	
 	
 	public BlackSorcerer(float x, float y) throws SlickException {
 		super(x, y);
@@ -19,28 +17,5 @@ public class BlackSorcerer extends Sorcerer {
 	 public void draw(){
 			image.draw(x,y);
 		}
-	 
-	 
-	 public void turnLeft() {
-	      x -= 2;
-	      image = left;
-	 }
-
-	 public void turnRight(){
-		 x += 2;
-		 image = right;
-	 }
-
-	 public void turnUp(){
-		 y -= 2;
-		 image = back;
-	 }
-
-	 public void turnDown(){
-		 y += 2;
-		 image = front;
-	 }
-	 
-	 
 }
 
