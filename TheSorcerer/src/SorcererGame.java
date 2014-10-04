@@ -21,13 +21,15 @@ public class SorcererGame extends BasicGame{
 	public BlackSorcerer black;
 	public Sorcerer sorcerer;
 	public Map map;
-	private int numSkill = 0;;
+	private int numSkill1 = 0;
+	private int numSkill2 = 0;
 	private boolean isStarted;
 	private boolean isGameOver;
 	private boolean isRestart;
 	
 	
 	public ArrayList<Skill> skill1 = new ArrayList<Skill>();
+	public ArrayList<Skill> skill2 = new ArrayList<Skill>();
 	private LinkedList<Entity> entities ;
 	
 	
@@ -44,6 +46,9 @@ public class SorcererGame extends BasicGame{
 		for (Skill skill : skill1) {
 		      skill.draw();
 		    }
+		for (Skill skill : skill2) {
+		      skill.draw();
+		    }
 		
 	}
 
@@ -53,7 +58,7 @@ public class SorcererGame extends BasicGame{
 		white = new WhiteSorcerer(GAME_WIDTH/6-45,GAME_HEIGHT/2-32);
 		black = new BlackSorcerer(GAME_WIDTH/6*5,GAME_HEIGHT/2-32);
 		map = new Map(0,0);
-		entities.add(new Map(0,0));
+		entities.add(map);
 		entities.add(white);
 		entities.add(black);
 		
@@ -69,12 +74,16 @@ public class SorcererGame extends BasicGame{
 	    for (Skill skill : skill1) {
 		      skill.update(delta);
 		    }
+	    for (Skill skill : skill2) {
+		      skill.update(delta);
+		    }
+	    
 	    Input input = container.getInput();
 	    controllerSorcerer(input);
 	    blackSorcererController(input);
+	    whiteSorcererController(input);
 	    checkSkillCollision();
 	    timeCounter(delta);
-	    
 		
 	}
 
@@ -95,41 +104,46 @@ public class SorcererGame extends BasicGame{
 
 		 
 	private void checkSkillCollision() {
+		checkForBlack();
+		checkForWhite();
+	}
+
+
+	private void checkForBlack() {
 		for(int i = 0 ; i < skill1.size() ; i++){
 			Skill temp = skill1.get(i);
 			if(white.isCollision(temp)){
 				skill1.remove(i);
-				numSkill --;
+				numSkill1 --;
 			}
 			if(map.isCollision(temp)){
 				skill1.remove(i);
-				numSkill --;
+				numSkill1 --;
 			}
 		}
 	}
-	
-	
-	public void checkTurn(Skill skill){
-			if(black.image == black.left){
-					  skill.isturnleft = true;
+
+
+	private void checkForWhite() {
+		for(int i = 0 ; i < skill2.size() ; i++){
+			Skill temp = skill2.get(i);
+			if(black.isCollision(temp)){
+				skill2.remove(i);
+				numSkill2 --;
 			}
-			if(black.image == black.right){
-					  skill.isturnright = true;
+			if(map.isCollision(temp)){
+				skill2.remove(i);
+				numSkill2 --;
 			}
-			if(black.image == black.back){
-					  skill.isturnup = true;
-			}
-			if(black.image == black.front){
-					  skill.isturndown = true;
-			}
+		}
 	}
 
 	
 	public void blackSorcererController(Input input) throws SlickException {
 			if (input.isKeyPressed(Input.KEY_U)){
 				skill1.add(new Fireball(black.x,black.y));
-				checkTurn(skill1.get(numSkill));
-				numSkill ++;
+				black.checkTurn(skill1.get(numSkill1));
+				numSkill1 ++;
 				for (int i = 0;i<skill1.size();i++){
 					skill1.get(i).releaseSkill();
 					
@@ -137,6 +151,20 @@ public class SorcererGame extends BasicGame{
 			}
 
 	}
+	
+	public void whiteSorcererController(Input input) throws SlickException {
+		if (input.isKeyPressed(Input.KEY_Q)){
+			skill2.add(new Fireball(white.x,white.y));
+			white.checkTurn(skill2.get(numSkill1));
+			numSkill2 ++;
+			for (int i = 0;i<skill2.size();i++){
+				System.out.println(skill2.size());
+				skill2.get(i).releaseSkill();
+				
+			}
+		}
+
+}
 	
 	
 	public static void main(String[] args) {

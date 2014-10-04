@@ -46,11 +46,11 @@ public class Skill implements Entity{
     			x += SKILL_VELOCITY;
     		}
     		else if(isturndown){
-    			image.setRotation(270);
+    			image.setRotation(90);
     			y += SKILL_VELOCITY;
     		}
     		else if(isturnup){
-    			image.setRotation(90);
+    			image.setRotation(270);
     			y -= SKILL_VELOCITY;
     	}
     }

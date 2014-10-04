@@ -68,6 +68,21 @@ public class Sorcerer implements Entity{
 			return false;
 	}
 
+	protected void checkTurn(Skill skill){
+			if(image == left){
+					  skill.isturnleft = true;
+			}
+			if(image == right){
+					  skill.isturnright = true;
+			}
+			if(image == back){
+					  skill.isturnup = true;
+			}
+			if(image == front){
+					  skill.isturndown = true;
+			}
+	}
+
 	
 }
 
