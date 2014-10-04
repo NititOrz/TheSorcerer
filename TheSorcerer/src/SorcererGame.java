@@ -5,6 +5,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -51,8 +52,7 @@ public class SorcererGame extends BasicGame{
 	public void init(GameContainer container) throws SlickException {
 		white = new WhiteSorcerer(GAME_WIDTH/6-45,GAME_HEIGHT/2-32);
 		black = new BlackSorcerer(GAME_WIDTH/6*5,GAME_HEIGHT/2-32);
-		settingSkill();
-		//settingRelease();
+		map = new Map(0,0);
 		entities.add(new Map(0,0));
 		entities.add(white);
 		entities.add(black);
@@ -72,7 +72,7 @@ public class SorcererGame extends BasicGame{
 	    Input input = container.getInput();
 	    controllerSorcerer(input);
 	    blackSorcererController(input);
-	    //checkSkillCollision();
+	    checkSkillCollision();
 	    timeCounter(delta);
 	    
 		
@@ -88,16 +88,6 @@ public class SorcererGame extends BasicGame{
 	    }
 	}
 
-	private void settingSkill(){
-		for (Skill skill : skill1) {
-			  skill.isturnleft = false;
-			  skill.isturnright = false;
-			  skill.isturndown = false;
-			  skill.isturnup = false;
-			  skill.isrelease = false;
-		}
-	}
-
 	private void controllerSorcerer(Input input) {
 		black.blackSorcererController(input);
 	    white.whiteSorercerController(input);
@@ -107,8 +97,13 @@ public class SorcererGame extends BasicGame{
 	private void checkSkillCollision() {
 		for(int i = 0 ; i < skill1.size() ; i++){
 			Skill temp = skill1.get(i);
-			if(sorcerer.isCollision(temp)){
+			if(white.isCollision(temp)){
 				skill1.remove(i);
+				numSkill --;
+			}
+			if(map.isCollision(temp)){
+				skill1.remove(i);
+				numSkill --;
 			}
 		}
 	}

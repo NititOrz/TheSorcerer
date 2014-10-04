@@ -62,7 +62,7 @@ public class Sorcerer implements Entity{
 
 	
 	public boolean isCollision(Skill temp) {
-		if(Math.abs(this.x - temp.x) < SORCERER_WIDTH && Math.abs(this.y - temp.y) < SORCERER_HEIGHT){
+		if(Math.abs(x - temp.x) < SORCERER_WIDTH && Math.abs(y - temp.y) < SORCERER_HEIGHT){
 			return true;
 			}
 			return false;

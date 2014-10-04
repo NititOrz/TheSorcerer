@@ -12,9 +12,9 @@ public class Skill implements Entity{
 	protected float y;
 	public boolean isrelease = false;
 	public boolean isturnleft ,isturnright ,isturnup ,isturndown;
-	protected float SKILL_WIDTH = 32;
-	protected float SKILL_HEIGHT = 24;
-	protected static final float SKILL_VELOCITY = 10;
+	public static final float SKILL_WIDTH = 32;
+	public static final float SKILL_HEIGHT = 24;
+	public static final float SKILL_VELOCITY = 10;
 	
 
 	public Skill(float x, float y) throws SlickException {
@@ -36,32 +36,21 @@ public class Skill implements Entity{
 	    return y;
 	 }
     
-    /*public void checkBlackTurn(){
-    	if(game.black.image == game.black.left){
-    		isturnleft = true;
-    	}
-    	else if(game.black.image == game.black.right){
-    		isturnright = true;
-    	}
-    	else if(game.black.image == game.black.back){
-    		isturnup = true;
-    	}
-    	else if(game.black.image == game.black.front){
-    		isturndown = true;
-    	}
-    }*/
-    
     public void releaseSkill(){
     		if(isturnleft){
+    			image.setRotation(180);
     			x -= SKILL_VELOCITY;
     		}
     		else if(isturnright){
+    			image.setRotation(0);
     			x += SKILL_VELOCITY;
     		}
     		else if(isturndown){
+    			image.setRotation(270);
     			y += SKILL_VELOCITY;
     		}
     		else if(isturnup){
+    			image.setRotation(90);
     			y -= SKILL_VELOCITY;
     	}
     }
