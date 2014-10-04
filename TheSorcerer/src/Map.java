@@ -5,6 +5,7 @@ import org.newdawn.slick.SlickException;
 public class Map implements Entity{
 	
 	public static final int WALL_WIDTH = 20;
+	private SorcererGame game;
 	private float x;
 	private float y;
 	private Image background;
@@ -39,6 +40,22 @@ public class Map implements Entity{
 		topbottomwall.draw(x,y+SorcererGame.GAME_HEIGHT-WALL_WIDTH);
 		leftrightwall.draw(x,y);
 		leftrightwall.draw(x+SorcererGame.GAME_WIDTH-WALL_WIDTH,y);
+	}
+	 
+	public boolean isCollision(Skill temp) {
+		if(temp.x <= Map.WALL_WIDTH){
+			return true;
+		}
+		if(temp.x >= SorcererGame.GAME_WIDTH-Map.WALL_WIDTH-temp.SKILL_WIDTH){
+			return true;
+		}
+		if(temp.y <= Map.WALL_WIDTH){
+			return true;
+		}
+		if(temp.y >= SorcererGame.GAME_HEIGHT-Map.WALL_WIDTH-temp.SKILL_HEIGHT){
+			return true;
+		}
+		return false;
 	}
 
 	@Override

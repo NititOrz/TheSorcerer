@@ -9,6 +9,8 @@ public class Fireball extends Skill {
 		image = new Image("res/fireball.png");
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	public void draw() {
 		image.draw(x,y);
 		

@@ -4,30 +4,34 @@ import org.newdawn.slick.SlickException;
 
 public class Sorcerer implements Entity{
 	
-	public int velocity = 5;
+	
+	protected static final int SORCERER_VELOCITY = 5;
 	protected Image right,left,front,back,image;
+	protected Skill skill;
 	protected float x;
 	protected float y;
 	public static final int SORCERER_HEIGHT = 60;
 	public static final int SORCERER_WIDTH = 48;
 	
+	
 	public Sorcerer(float x, float y) throws SlickException {
 	    this.setXY(x,y); 
-	  }
+	}
 	
 	protected void setXY(float x, float y) {
 	    this.x = x;
 	    this.y = y;
-	  }
+	}
+	
 	
 	protected float getX() {
 	    return x;
-	  }
+	}
 	
 	 
-    protected float getY() {
+	protected float getY() {
 	    return y;
-	  }
+	}
 	  
 
 	public void bgCheck(float x, float y){
@@ -45,7 +49,6 @@ public class Sorcerer implements Entity{
 		}
 		
 	}
-
 	
 	@Override
 	public void update(int delta) {
@@ -56,27 +59,8 @@ public class Sorcerer implements Entity{
 	public void draw() {
 		
 	}
+
 	
-	public void turnLeft() {
-	      x -= velocity;
-	      image = left;
-	 }
-
-	 public void turnRight(){
-		 x += velocity;
-		 image = right;
-	 }
-
-	 public void turnUp(){
-		 y -= velocity;
-		 image = back;
-	 }
-
-	 public void turnDown(){
-		 y += velocity;
-		 image = front;
-	 }
-
 	public boolean isCollision(Skill temp) {
 		if(Math.abs(this.x - temp.x) < SORCERER_WIDTH && Math.abs(this.y - temp.y) < SORCERER_HEIGHT){
 			return true;
@@ -84,7 +68,6 @@ public class Sorcerer implements Entity{
 			return false;
 	}
 
-	
 	
 }
 
