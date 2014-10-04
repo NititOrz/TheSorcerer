@@ -5,7 +5,6 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -14,8 +13,8 @@ import org.newdawn.slick.SlickException;
 public class SorcererGame extends BasicGame{
 	
 	
-	public static final int GAME_WIDTH = 640;
-	public static final int GAME_HEIGHT = 480;
+	public static final int GAME_WIDTH = 1024;
+	public static final int GAME_HEIGHT = 640;
 	public int count = 0,time = 0;
 	public WhiteSorcerer white;
 	public BlackSorcerer black;
@@ -155,16 +154,15 @@ public class SorcererGame extends BasicGame{
 	public void whiteSorcererController(Input input) throws SlickException {
 		if (input.isKeyPressed(Input.KEY_Q)){
 			skill2.add(new Fireball(white.x,white.y));
-			white.checkTurn(skill2.get(numSkill1));
+			white.checkTurn(skill2.get(numSkill2));
 			numSkill2 ++;
 			for (int i = 0;i<skill2.size();i++){
-				System.out.println(skill2.size());
 				skill2.get(i).releaseSkill();
 				
 			}
 		}
 
-}
+	}
 	
 	
 	public static void main(String[] args) {
