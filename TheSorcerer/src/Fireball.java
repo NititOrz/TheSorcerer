@@ -12,6 +12,7 @@ public class Fireball extends Skill {
 	
 	
 	public void draw() {
+		if(isrelease)
 		image.draw(x,y);
 		
 	}

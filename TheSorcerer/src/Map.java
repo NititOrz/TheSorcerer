@@ -35,23 +35,23 @@ public class Map implements Entity{
 
 	 public void draw(){
 		background.draw(x,y);
-		topbottomwall.draw(x,y);
-		topbottomwall.draw(x,y+SorcererGame.GAME_HEIGHT-WALL_WIDTH);
-		leftrightwall.draw(x,y);
-		leftrightwall.draw(x+SorcererGame.GAME_WIDTH-WALL_WIDTH,y);
+		topbottomwall.draw(x ,y);
+		topbottomwall.draw(x ,y + SorcererGame.GAME_HEIGHT-WALL_WIDTH - SorcererGame.STATUS_SPACE);
+		leftrightwall.draw(x ,y);
+		leftrightwall.draw(x + SorcererGame.GAME_WIDTH-WALL_WIDTH ,y);
 	}
 	 
 	public boolean isCollision(Skill temp) {
 		if(temp.x <= Map.WALL_WIDTH){
 			return true;
 		}
-		if(temp.x >= SorcererGame.GAME_WIDTH-WALL_WIDTH-Skill.SKILL_WIDTH){
+		if(temp.x >= SorcererGame.GAME_WIDTH - WALL_WIDTH-Skill.SKILL_WIDTH){
 			return true;
 		}
-		if(temp.y <= WALL_WIDTH){
+		if(temp.y <= WALL_WIDTH + SorcererGame.STATUS_SPACE){
 			return true;
 		}
-		if(temp.y >= SorcererGame.GAME_HEIGHT-WALL_WIDTH-Skill.SKILL_HEIGHT){
+		if(temp.y >= SorcererGame.GAME_HEIGHT-WALL_WIDTH - Skill.SKILL_HEIGHT){
 			return true;
 		}
 		return false;

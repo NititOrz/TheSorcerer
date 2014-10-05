@@ -5,7 +5,7 @@ import org.newdawn.slick.SlickException;
 public class Sorcerer implements Entity{
 	
 	
-	protected static final int SORCERER_VELOCITY = 5;
+	protected static final int SORCERER_VELOCITY = 3;
 	protected Image right,left,front,back,image;
 	protected Skill skill;
 	protected float x;
@@ -38,14 +38,14 @@ public class Sorcerer implements Entity{
 		if(x <= Map.WALL_WIDTH){
 			this.x=Map.WALL_WIDTH;
 		}
-		if(x >= SorcererGame.GAME_WIDTH-Map.WALL_WIDTH-SORCERER_WIDTH){
-			this.x=SorcererGame.GAME_WIDTH-Map.WALL_WIDTH-SORCERER_WIDTH;
+		if(x >= SorcererGame.GAME_WIDTH - Map.WALL_WIDTH - SORCERER_WIDTH){
+			this.x=SorcererGame.GAME_WIDTH - Map.WALL_WIDTH - SORCERER_WIDTH;
 		}
-		if(y <= Map.WALL_WIDTH){
-			this.y=Map.WALL_WIDTH;
+		if(y <= Map.WALL_WIDTH + SorcererGame.STATUS_SPACE){
+			this.y=Map.WALL_WIDTH + SorcererGame.STATUS_SPACE;
 		}
-		if(y >= SorcererGame.GAME_HEIGHT-Map.WALL_WIDTH-SORCERER_HEIGHT){
-			this.y=SorcererGame.GAME_HEIGHT-Map.WALL_WIDTH-SORCERER_HEIGHT;
+		if(y >= SorcererGame.GAME_HEIGHT - Map.WALL_WIDTH - SORCERER_HEIGHT){
+			this.y=SorcererGame.GAME_HEIGHT - Map.WALL_WIDTH - SORCERER_HEIGHT;
 		}
 		
 	}
@@ -62,7 +62,7 @@ public class Sorcerer implements Entity{
 
 	
 	public boolean isCollision(Skill temp) {
-		if(Math.abs(x - temp.x) < SORCERER_WIDTH && Math.abs(y - temp.y) < SORCERER_HEIGHT){
+		if(Math.abs((x+SORCERER_WIDTH/2) - (temp.x+Skill.SKILL_WIDTH/2)) < SORCERER_WIDTH/2 && Math.abs((y+SORCERER_HEIGHT/2) - (temp.y+Skill.SKILL_HEIGHT/2)) < SORCERER_HEIGHT/2){
 			return true;
 			}
 			return false;

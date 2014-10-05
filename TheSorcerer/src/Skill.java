@@ -7,7 +7,6 @@ public class Skill implements Entity{
 	protected Image image;
 	protected SorcererGame game;
 	protected Sorcerer sorcerer;
-	protected boolean cooldown;
 	protected float x;
 	protected float y;
 	public boolean isrelease = false;
@@ -37,6 +36,7 @@ public class Skill implements Entity{
 	 }
     
     public void releaseSkill(){
+    	if(isrelease)
     		if(isturnleft){
     			image.setRotation(180);
     			x -= SKILL_VELOCITY;
