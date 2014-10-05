@@ -5,6 +5,8 @@ import org.newdawn.slick.SlickException;
 
 public class Status implements Entity{
 
+	private static final int SPACE_NAME = 32;
+	private static final int SPACE_HP_BAR = 128;
 	public static final int initHP = 100;
 	public int Damage = 20;
 	public Image hp_frame;
@@ -43,14 +45,17 @@ public class Status implements Entity{
 
 	@Override
 	public void draw() {
-	hp_bar.draw(x + 128,y);
-	hp_frame.draw(x + 128,y);
+	hp_bar.draw(x + SPACE_HP_BAR,y);
+	hp_frame.draw(x + SPACE_HP_BAR,y);
+	hp_bar.draw(x + SorcererGame.GAME_WIDTH - 2*SPACE_HP_BAR ,y);
+	hp_frame.draw(x + SorcererGame.GAME_WIDTH - 2*SPACE_HP_BAR ,y);
 	
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.drawString("Player 1", x + 32, y);
+		g.drawString("Player 1", x + SPACE_NAME, y);
+		g.drawString("Player 2", x + SorcererGame.GAME_WIDTH - 3*SPACE_NAME, y);
 	}
 
 }

@@ -124,16 +124,26 @@ public class SorcererGame extends BasicGame{
 	private void checkForBlack() {
 		for(int i = 0 ; i < skill1.size() ; i++){
 			Skill temp = skill1.get(i);
-			if(white.isCollision(temp)){
-				skill1.remove(i);
-				numSkill1 --;
-				white.hp = white.hp - status.Damage;
-				//System.out.println(white.hp);
-			}
-			if(map.isCollision(temp)){
-				skill1.remove(i);
-				numSkill1 --;
-			}
+			removeSkillWhenCollideWhite(i, temp);
+			removeSkillWhenCollideWallForBlack(i, temp);
+		}
+	}
+
+
+	private void removeSkillWhenCollideWallForBlack(int i, Skill temp) {
+		if(map.isCollision(temp)){
+			skill1.remove(i);
+			numSkill1 --;
+		}
+	}
+
+
+	private void removeSkillWhenCollideWhite(int i, Skill temp) {
+		if(white.isCollision(temp)){
+			skill1.remove(i);
+			numSkill1 --;
+			white.hp = white.hp - status.Damage;
+			//System.out.println(white.hp);
 		}
 	}
 
@@ -141,16 +151,26 @@ public class SorcererGame extends BasicGame{
 	private void checkForWhite() {
 		for(int i = 0 ; i < skill2.size() ; i++){
 			Skill temp = skill2.get(i);
-			if(black.isCollision(temp)){
-				skill2.remove(i);
-				numSkill2 --;
-				black.hp = black.hp - status.Damage;
-				//System.out.println(black.hp);
-			}
-			if(map.isCollision(temp)){
-				skill2.remove(i);
-				numSkill2 --;
-			}
+			removeSkillWhenCollideBlack(i, temp);
+			removeSkillWhenCollideWallForWhite(i, temp);
+		}
+	}
+
+
+	private void removeSkillWhenCollideWallForWhite(int i, Skill temp) {
+		if(map.isCollision(temp)){
+			skill2.remove(i);
+			numSkill2 --;
+		}
+	}
+
+
+	private void removeSkillWhenCollideBlack(int i, Skill temp) {
+		if(black.isCollision(temp)){
+			skill2.remove(i);
+			numSkill2 --;
+			black.hp = black.hp - status.Damage;
+			//System.out.println(black.hp);
 		}
 	}
 
@@ -161,7 +181,7 @@ public class SorcererGame extends BasicGame{
 					time.skill1DelayCheck(skill1.get(numSkill1));
 					black.checkTurn(skill1.get(numSkill1));
 					numSkill1 ++;
-					for (int i = 0;i<skill1.size();i++){
+					for (int i = 0;i<skill1.size();i++){ //release skill
 						skill1.get(i).releaseSkill();
 					}
 			}

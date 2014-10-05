@@ -23,21 +23,37 @@ public class WhiteSorcerer extends Sorcerer {
 	}
 	
 	public void whiteSorercerController(Input input) {
-		if (input.isKeyDown(Input.KEY_A)) { 
-			image = left;
-			this.x -= SORCERER_VELOCITY;
+		turnLeft(input);
+		turnRight(input);
+		turnUp(input);
+		turnDown(input);
+	}
+
+	private void turnDown(Input input) {
+		if (input.isKeyDown(Input.KEY_S)) {
+			image = front;
+			this.y += SORCERER_VELOCITY;
 		}
-		if (input.isKeyDown(Input.KEY_D)) {
-			image = right;
-			this.x += SORCERER_VELOCITY;
-		}
+	}
+
+	private void turnUp(Input input) {
 		if (input.isKeyDown(Input.KEY_W)) { 
 			image = back;
 			this.y -= SORCERER_VELOCITY;
 		}
-		if (input.isKeyDown(Input.KEY_S)) {
-			image = front;
-			this.y += SORCERER_VELOCITY;
+	}
+
+	private void turnRight(Input input) {
+		if (input.isKeyDown(Input.KEY_D)) {
+			image = right;
+			this.x += SORCERER_VELOCITY;
+		}
+	}
+
+	private void turnLeft(Input input) {
+		if (input.isKeyDown(Input.KEY_A)) { 
+			image = left;
+			this.x -= SORCERER_VELOCITY;
 		}
 	}
 }

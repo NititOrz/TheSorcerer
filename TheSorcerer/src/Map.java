@@ -36,23 +36,23 @@ public class Map implements Entity{
 
 	 public void draw(){
 		background.draw(x,y);
-		topbottomwall.draw(x ,y);
-		topbottomwall.draw(x ,y + SorcererGame.GAME_HEIGHT-WALL_WIDTH - SorcererGame.STATUS_SPACE);
-		leftrightwall.draw(x ,y);
-		leftrightwall.draw(x + SorcererGame.GAME_WIDTH-WALL_WIDTH ,y);
+		topbottomwall.draw(x ,y);		//draw top wall
+		topbottomwall.draw(x ,y + SorcererGame.GAME_HEIGHT-WALL_WIDTH - SorcererGame.STATUS_SPACE);		//draw bottom wall
+		leftrightwall.draw(x ,y);		//draw left wall
+		leftrightwall.draw(x + SorcererGame.GAME_WIDTH-WALL_WIDTH ,y);		//draw right wall
 	}
 	 
 	public boolean isCollision(Skill temp) {
-		if(temp.x <= Map.WALL_WIDTH){
+		if(temp.x <= Map.WALL_WIDTH){		//left wall
 			return true;
 		}
-		if(temp.x >= SorcererGame.GAME_WIDTH - WALL_WIDTH-Skill.SKILL_WIDTH){
+		if(temp.x >= SorcererGame.GAME_WIDTH - WALL_WIDTH-Skill.SKILL_WIDTH){		//right wall
 			return true;
 		}
-		if(temp.y <= WALL_WIDTH + SorcererGame.STATUS_SPACE){
+		if(temp.y <= WALL_WIDTH + SorcererGame.STATUS_SPACE){		//top wall
 			return true;
 		}
-		if(temp.y >= SorcererGame.GAME_HEIGHT-WALL_WIDTH - Skill.SKILL_HEIGHT){
+		if(temp.y >= SorcererGame.GAME_HEIGHT-WALL_WIDTH - Skill.SKILL_HEIGHT){		//bottom wall
 			return true;
 		}
 		return false;

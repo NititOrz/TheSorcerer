@@ -38,23 +38,27 @@ public class Skill implements Entity{
     
     public void releaseSkill(){
     	if(isrelease)
-    		if(isturnleft){
-    			image.setRotation(180);
-    			x -= SKILL_VELOCITY;
-    		}
-    		else if(isturnright){
-    			image.setRotation(0);
-    			x += SKILL_VELOCITY;
-    		}
-    		else if(isturndown){
-    			image.setRotation(90);
-    			y += SKILL_VELOCITY;
-    		}
-    		else if(isturnup){
-    			image.setRotation(270);
-    			y -= SKILL_VELOCITY;
-    	}
+			getSkillDirection();
     }
+
+	private void getSkillDirection() {
+		if(isturnleft){
+			image.setRotation(180);
+			x -= SKILL_VELOCITY;
+		}
+		else if(isturnright){
+			image.setRotation(0);
+			x += SKILL_VELOCITY;
+		}
+		else if(isturndown){
+			image.setRotation(90);
+			y += SKILL_VELOCITY;
+		}
+		else if(isturnup){
+			image.setRotation(270);
+			y -= SKILL_VELOCITY;
+  	}
+	}
 	
 	@Override
 	public void update(int delta) {

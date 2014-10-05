@@ -40,19 +40,35 @@ public class Sorcerer implements Entity{
 	}
 	  
 	public void bgCheck(float x, float y){
-		if(x <= Map.WALL_WIDTH){
-			this.x=Map.WALL_WIDTH;
-		}
-		if(x >= SorcererGame.GAME_WIDTH - Map.WALL_WIDTH - SORCERER_WIDTH){
-			this.x=SorcererGame.GAME_WIDTH - Map.WALL_WIDTH - SORCERER_WIDTH;
-		}
-		if(y <= Map.WALL_WIDTH + SorcererGame.STATUS_SPACE){
-			this.y=Map.WALL_WIDTH + SorcererGame.STATUS_SPACE;
-		}
+		isCollideLeftWall(x);
+		isCollideRightWall(x);
+		isCollideTopWall(y);
+		isCollideBottomWalll(y);
+		
+	}
+
+	private void isCollideBottomWalll(float y) {
 		if(y >= SorcererGame.GAME_HEIGHT - Map.WALL_WIDTH - SORCERER_HEIGHT){
 			this.y=SorcererGame.GAME_HEIGHT - Map.WALL_WIDTH - SORCERER_HEIGHT;
 		}
-		
+	}
+
+	private void isCollideTopWall(float y) {
+		if(y <= Map.WALL_WIDTH + SorcererGame.STATUS_SPACE){
+			this.y=Map.WALL_WIDTH + SorcererGame.STATUS_SPACE;
+		}
+	}
+
+	private void isCollideRightWall(float x) {
+		if(x >= SorcererGame.GAME_WIDTH - Map.WALL_WIDTH - SORCERER_WIDTH){
+			this.x=SorcererGame.GAME_WIDTH - Map.WALL_WIDTH - SORCERER_WIDTH;
+		}
+	}
+
+	private void isCollideLeftWall(float x) {
+		if(x <= Map.WALL_WIDTH){
+			this.x=Map.WALL_WIDTH;
+		}
 	}
 	
 	@Override
@@ -74,18 +90,34 @@ public class Sorcerer implements Entity{
 	}
 
 	protected void checkTurn(Skill skill){
-			if(image == left){
-					  skill.isturnleft = true;
-			}
-			if(image == right){
-					  skill.isturnright = true;
-			}
-			if(image == back){
-					  skill.isturnup = true;
-			}
-			if(image == front){
-					  skill.isturndown = true;
-			}
+			isTurnLeft(skill);
+			isTurnRight(skill);
+			isTurnUp(skill);
+			isTurnDown(skill);
+	}
+
+	private void isTurnDown(Skill skill) {
+		if(image == front){
+				  skill.isturndown = true;
+		}
+	}
+
+	private void isTurnUp(Skill skill) {
+		if(image == back){
+				  skill.isturnup = true;
+		}
+	}
+
+	private void isTurnRight(Skill skill) {
+		if(image == right){
+				  skill.isturnright = true;
+		}
+	}
+
+	private void isTurnLeft(Skill skill) {
+		if(image == left){
+				  skill.isturnleft = true;
+		}
 	}
 
 	@Override
