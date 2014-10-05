@@ -13,28 +13,30 @@ public class Map implements Entity{
 	private Image leftrightwall;
 	
 	public Map(float x, float y) throws SlickException {
+		initImage();
+	    this.setXY(x,y);  
+	}
+
+	private void initImage() throws SlickException {
 		background = new Image("res/background.png");
 		topbottomwall = new Image("res/top and bottom wall.png");
 		leftrightwall = new Image("res/left and right wall.png");
-	    this.setXY(x,y); 
-	    
-	  }
+	}
 	
 	public float getX() {
 	    return x;
-	  }
+	}
 	
-	 
     public float getY() {
 	    return y;
-	  }
+    }
 	  
 	protected void setXY(float x, float y) {
 	    this.x = x;
 	    this.y = y;
-	  }
+	}
 
-	 public void draw(){
+	public void draw(){
 		background.draw(x,y);
 		topbottomwall.draw(x ,y);		//draw top wall
 		topbottomwall.draw(x ,y + SorcererGame.GAME_HEIGHT-WALL_WIDTH - SorcererGame.STATUS_SPACE);		//draw bottom wall
@@ -55,15 +57,18 @@ public class Map implements Entity{
 		if(temp.y >= SorcererGame.GAME_HEIGHT-WALL_WIDTH - Skill.SKILL_HEIGHT){		//bottom wall
 			return true;
 		}
+		
 		return false;
 	}
 
+	
 	@Override
 	public void update(int delta) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub

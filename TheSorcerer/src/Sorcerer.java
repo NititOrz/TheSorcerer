@@ -5,16 +5,15 @@ import org.newdawn.slick.SlickException;
 
 public class Sorcerer implements Entity{
 	
-	
-	protected static final int SORCERER_VELOCITY = 3;
+	public static final int SORCERER_HEIGHT = 60;
+	public static final int SORCERER_WIDTH = 48;
+	public static final int SORCERER_VELOCITY = 3;
 	protected Image right,left,front,back,image;
 	protected Skill skill;
 	protected float x;
 	protected float y;
 	protected int hp = 0;
 	protected Status status;
-	public static final int SORCERER_HEIGHT = 60;
-	public static final int SORCERER_WIDTH = 48;
 	
 	
 	public Sorcerer(float x, float y) throws SlickException {
@@ -30,13 +29,16 @@ public class Sorcerer implements Entity{
 	    return x;
 	}
 	
-	 
 	protected float getY() {
 	    return y;
 	}
 	
 	protected void setHP(){
-		 hp = Status.initHP;
+		hp = Status.initHP;
+	}
+	
+	protected int getHP(){
+		return hp;
 	}
 	  
 	public void bgCheck(float x, float y){
@@ -44,7 +46,6 @@ public class Sorcerer implements Entity{
 		isCollideRightWall(x);
 		isCollideTopWall(y);
 		isCollideBottomWalll(y);
-		
 	}
 
 	private void isCollideBottomWalll(float y) {
@@ -71,6 +72,7 @@ public class Sorcerer implements Entity{
 		}
 	}
 	
+	
 	@Override
 	public void update(int delta) {
 		bgCheck(this.x,this.y);
@@ -85,41 +87,43 @@ public class Sorcerer implements Entity{
 	public boolean isCollision(Skill temp) {
 		if(Math.abs((x+SORCERER_WIDTH/2) - (temp.x+Skill.SKILL_WIDTH/2)) < SORCERER_WIDTH/2 && Math.abs((y+SORCERER_HEIGHT/2) - (temp.y+Skill.SKILL_HEIGHT/2)) < SORCERER_HEIGHT/2){
 			return true;
-			}
-			return false;
+		}
+		
+		return false;
 	}
 
 	protected void checkTurn(Skill skill){
-			isTurnLeft(skill);
-			isTurnRight(skill);
-			isTurnUp(skill);
-			isTurnDown(skill);
+		isTurnLeft(skill);
+		isTurnRight(skill);
+		isTurnUp(skill);
+		isTurnDown(skill);
 	}
 
 	private void isTurnDown(Skill skill) {
 		if(image == front){
-				  skill.isturndown = true;
+			skill.isturndown = true;
 		}
 	}
 
 	private void isTurnUp(Skill skill) {
 		if(image == back){
-				  skill.isturnup = true;
+			skill.isturnup = true;
 		}
 	}
 
 	private void isTurnRight(Skill skill) {
 		if(image == right){
-				  skill.isturnright = true;
+			skill.isturnright = true;
 		}
 	}
 
 	private void isTurnLeft(Skill skill) {
 		if(image == left){
-				  skill.isturnleft = true;
+			skill.isturnleft = true;
 		}
 	}
 
+	
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub

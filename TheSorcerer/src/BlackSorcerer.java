@@ -5,27 +5,33 @@ import org.newdawn.slick.SlickException;
 
 public class BlackSorcerer extends Sorcerer {
 
-	
 	public BlackSorcerer(float x, float y) throws SlickException {
 		super(x, y);
+		setImage();
+		initImage();
+	}
+
+	private void initImage() {
+		image = left;
+	}
+
+	private void setImage() throws SlickException {
 		right = new Image("res/blacksorcerer right.png");
 		left = new Image("res/blacksorcerer left.png");
 		front = new Image("res/blacksorcerer front.png");
 		back = new Image("res/blacksorcerer back.png");
-		image = left;
 	}
 
-	 public void draw(){
-			image.draw(x,y);
-			
-	 }
+	public void draw(){
+		image.draw(x,y);	
+	}
 	 
-	 public void blackSorcererController(Input input) {
-			turnLeft(input);
-			turnRight(input);
-			turnUp(input);
-			turnDown(input);
-	 }
+	public void blackSorcererController(Input input) {
+		turnLeft(input);
+		turnRight(input);
+		turnUp(input);
+		turnDown(input);	
+	}
 
 	private void turnDown(Input input) {
 		if (input.isKeyDown(Input.KEY_K)) {
@@ -50,7 +56,7 @@ public class BlackSorcerer extends Sorcerer {
 
 	private void turnLeft(Input input) {
 		if (input.isKeyDown(Input.KEY_J)) { 
-			image = left;
+			initImage();
 			this.x -= SORCERER_VELOCITY;
 		}
 	}

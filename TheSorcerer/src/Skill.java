@@ -14,31 +14,29 @@ public class Skill implements Entity{
 	public boolean isturnleft ,isturnright ,isturnup ,isturndown;
 	public static final float SKILL_WIDTH = 32;
 	public static final float SKILL_HEIGHT = 24;
-	public static final float SKILL_VELOCITY = 10;
+	public static final float SKILL_VELOCITY = 12;
 	
 
 	public Skill(float x, float y) throws SlickException {
 	    this.setXY(x,y); 
-	  }
+	}
 	
 	protected void setXY(float x, float y) {
 		this.x=x;
 		this.y=y;
-		
 	}
 	
 	protected float getX() {
 	    return x;
-	  }
-	
+	}
 	 
     protected float getY() {
 	    return y;
-	 }
+    }
     
     public void releaseSkill(){
     	if(isrelease)
-			getSkillDirection();
+    		getSkillDirection();
     }
 
 	private void getSkillDirection() {
@@ -57,19 +55,22 @@ public class Skill implements Entity{
 		else if(isturnup){
 			image.setRotation(270);
 			y -= SKILL_VELOCITY;
-  	}
+		}
 	}
+
 	
 	@Override
 	public void update(int delta) {
 		releaseSkill();
 	}
 
+	
 	public void draw() {
 		// TODO Auto-generated method stub
 		
 	}
 
+	
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub

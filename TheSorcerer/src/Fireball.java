@@ -10,11 +10,9 @@ public class Fireball extends Skill {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 	public void draw() {
 		if(isrelease)
 		image.draw(x,y);
-		
 	}
 
 }
