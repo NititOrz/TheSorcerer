@@ -1,3 +1,4 @@
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -61,6 +62,12 @@ public class Skill implements Entity{
 	}
 
 	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		
 	}

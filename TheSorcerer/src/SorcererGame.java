@@ -21,6 +21,7 @@ public class SorcererGame extends BasicGame{
 	public Sorcerer sorcerer;
 	public Map map;
 	public TimeMagement time;
+	protected Status status;
 	private int numSkill1 = 0;
 	private int numSkill2 = 0;
 	private boolean isStarted;
@@ -41,6 +42,7 @@ public class SorcererGame extends BasicGame{
 
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		for (Entity entity : entities) {
+		      entity.draw(g);
 		      entity.draw();
 		    }
 		for (Skill skill : skill1) {
@@ -55,16 +57,35 @@ public class SorcererGame extends BasicGame{
 	
 	@Override
 	public void init(GameContainer container) throws SlickException {
+		inition();
+		addEntity();
+		setPlayerHP();
+		
+		
+	}
+
+
+	private void inition() throws SlickException {
 		white = new WhiteSorcerer(GAME_WIDTH/6 - 45 ,GAME_HEIGHT/2 - 32);
 		black = new BlackSorcerer(GAME_WIDTH/6 * 5,GAME_HEIGHT/2 - 32);
 		map = new Map(0 ,STATUS_SPACE);
+		status = new Status(0,0);
 		time = new TimeMagement();
+	}
+
+
+	private void addEntity() {
+		entities.add(status);
 		entities.add(time);
 		entities.add(map);
 		entities.add(white);
 		entities.add(black);
-		
-		
+	}
+
+
+	private void setPlayerHP() {
+		white.setHP();
+		black.setHP();
 	}
 
 	
@@ -106,6 +127,8 @@ public class SorcererGame extends BasicGame{
 			if(white.isCollision(temp)){
 				skill1.remove(i);
 				numSkill1 --;
+				white.hp = white.hp - status.Damage;
+				//System.out.println(white.hp);
 			}
 			if(map.isCollision(temp)){
 				skill1.remove(i);
@@ -121,6 +144,8 @@ public class SorcererGame extends BasicGame{
 			if(black.isCollision(temp)){
 				skill2.remove(i);
 				numSkill2 --;
+				black.hp = black.hp - status.Damage;
+				//System.out.println(black.hp);
 			}
 			if(map.isCollision(temp)){
 				skill2.remove(i);

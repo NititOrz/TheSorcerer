@@ -1,3 +1,4 @@
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -10,6 +11,8 @@ public class Sorcerer implements Entity{
 	protected Skill skill;
 	protected float x;
 	protected float y;
+	protected int hp = 0;
+	protected Status status;
 	public static final int SORCERER_HEIGHT = 60;
 	public static final int SORCERER_WIDTH = 48;
 	
@@ -23,7 +26,6 @@ public class Sorcerer implements Entity{
 	    this.y = y;
 	}
 	
-	
 	protected float getX() {
 	    return x;
 	}
@@ -32,8 +34,11 @@ public class Sorcerer implements Entity{
 	protected float getY() {
 	    return y;
 	}
+	
+	protected void setHP(){
+		 hp = Status.initHP;
+	}
 	  
-
 	public void bgCheck(float x, float y){
 		if(x <= Map.WALL_WIDTH){
 			this.x=Map.WALL_WIDTH;
@@ -81,6 +86,12 @@ public class Sorcerer implements Entity{
 			if(image == front){
 					  skill.isturndown = true;
 			}
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

@@ -1,3 +1,4 @@
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -59,6 +60,12 @@ public class Map implements Entity{
 
 	@Override
 	public void update(int delta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		
 	}
